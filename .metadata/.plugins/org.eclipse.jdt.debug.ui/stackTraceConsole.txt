@@ -1,0 +1,4 @@
+@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Post(@RequestBody @Valid Usuario usuario) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
+	}
