@@ -1,7 +1,7 @@
 package org.generation.blogPessoal.configuration;
 
-import java.util.ArrayList;
-import java.util.List;
+import  java.util.ArrayList;
+import  java.util.List;
 
 import  org.springframework.context.annotation.Bean;
 import  org.springframework.context.annotation.Configuration;
@@ -19,30 +19,48 @@ import  springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
-
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("org.generation.blogPessoal.controller"))
-				.paths(PathSelectors.any()).build().apiInfo(metadata()).useDefaultResponseMessages(false)
-				.globalResponses(HttpMethod.GET, responseMessage()).globalResponses(HttpMethod.POST, responseMessage())
-				.globalResponses(HttpMethod.PUT, responseMessage())
-				.globalResponses(HttpMethod.DELETE, responseMessage());
+		return new Docket(DocumentationType.SWAGGER_2)
+		.select()
+		.apis(RequestHandlerSelectors
+		.basePackage("com.mygamestore.MyGameStore.Controller"))
+		.paths(PathSelectors.any())
+		.build()
+		.apiInfo(metadata())
+		.useDefaultResponseMessages(false)
+		.globalResponses(HttpMethod.GET, responseMessage())
+		.globalResponses(HttpMethod.POST, responseMessage())
+		.globalResponses(HttpMethod.PUT, responseMessage())
+		.globalResponses(HttpMethod.DELETE, responseMessage());
 	}
 
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder().title("API - Blog Pessoal").description("Projeto API Spring - Blog Pessoal")
-				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/BrendaStefany/BlogPessoal")
-				.contact(contact()).build();
+
+		return new ApiInfoBuilder()
+			.title("API - My Game Store")
+			.description("Projeto API Spring - My Game Store")
+			.version("1.0.0")
+			.license("Apache License Version 2.0")
+			.licenseUrl("https://github.com/educastroo")
+			.contact(contact())
+			.build();
 	}
 
 	private static Contact contact() {
-		return new Contact("Brenda Stefany", "https://github.com/BrendaStefany/BlogPessoal", "brenda.stefany.cavalcanti@gmail.com");
+
+		return new Contact("Eduardo Castro", 
+			"https://github.com/educastroo", 
+			"educastrodev@gmail.com");
+
 	}
 
 	private static List<Response> responseMessage() {
+
 		return new ArrayList<Response>() {
+
 			private static final long serialVersionUID = 1L;
+
 			{
 				add(new ResponseBuilder().code("200").description("Sucesso!").build());
 				add(new ResponseBuilder().code("201").description("Criado!").build());
@@ -53,6 +71,6 @@ public class SwaggerConfig {
 				add(new ResponseBuilder().code("500").description("Erro!").build());
 			}
 		};
-	}
 
+	}
 }

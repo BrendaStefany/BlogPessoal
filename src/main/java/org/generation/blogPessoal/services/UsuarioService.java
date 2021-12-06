@@ -18,57 +18,6 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-//
-//	public Usuario CadastrarUsuario(Usuario usuario) {
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//
-//		String senhaEncoder = encoder.encode(usuario.getSenha());
-//		usuario.setSenha(senhaEncoder);
-//
-//		return usuarioRepository.save(usuario);
-//	}
-
-//	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
-//		
-//		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
-//
-//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
-//
-//		usuario.setSenha(criptografarSenha(usuario.getSenha()));
-//		String senhaEncoder = encoder.encode(usuario.getSenha());
-//		usuario.setSenha(senhaEncoder);
-//
-//		return Optional.of(repository.save(usuario));
-//
-//	}
-//
-//	private static String encriptadorDeSenha(String senha) {
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//		return encoder.encode(senha);
-//
-//	}
-//
-//	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//		Optional<Usuario> usuario = repository.findByUsuario(user.get().getUsuario());
-//		
-//		if(usuario.isPresent()) {
-//			if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
-//				
-//				String auth = user.get().getUsuario() + ":" + user.get().getSenha();
-//				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-//				String authHeader = "Basic " + new String(encodedAuth);
-//				
-//				user.get().setToken(authHeader);
-//				user.get().setNome(usuario.get().getNome());		
-//				
-//				return user;
-//			}
-//		}
-//		
-//		return null;
-//	}
-//	
 
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
@@ -108,8 +57,8 @@ public class UsuarioService {
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
-				usuarioLogin.get()
-						.setToken(generatorBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setTipo(usuario.get().getTipo());
+				usuarioLogin.get().setToken(generatorBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 
 				return usuarioLogin;
 
