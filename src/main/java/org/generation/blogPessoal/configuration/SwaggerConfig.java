@@ -24,7 +24,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2)
 		.select()
 		.apis(RequestHandlerSelectors
-		.basePackage("com.mygamestore.MyGameStore.Controller"))
+		.basePackage("org.generation.blogPessoal.controller"))
 		.paths(PathSelectors.any())
 		.build()
 		.apiInfo(metadata())
@@ -38,20 +38,20 @@ public class SwaggerConfig {
 	public static ApiInfo metadata() {
 
 		return new ApiInfoBuilder()
-			.title("API - My Game Store")
-			.description("Projeto API Spring - My Game Store")
+			.title("API - Blog Pessoal")
+			.description("Projeto API Spring - BlogPessoal")
 			.version("1.0.0")
 			.license("Apache License Version 2.0")
-			.licenseUrl("https://github.com/educastroo")
+			.licenseUrl("https://github.com/BrendaStefany/BlogPessoal")
 			.contact(contact())
 			.build();
 	}
 
 	private static Contact contact() {
 
-		return new Contact("Eduardo Castro", 
-			"https://github.com/educastroo", 
-			"educastrodev@gmail.com");
+		return new Contact("Brenda Stefany", 
+			"https://github.com/BrendaStefany", 
+			"brenda.stefany.cavalcanti@gmail.com");
 
 	}
 
